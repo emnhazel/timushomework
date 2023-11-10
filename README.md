@@ -175,3 +175,126 @@ Asenkron işlem ve senkron işlem arasındaki temel fark, işlemlerin nasıl ça
 
 # 20)Promise Nedir?
 Promise, JavaScript'te asenkron işlemleri düzenlemek ve işlem sonuçlarını işlemek için kullanılan bir yapıdır. İşlem sonucunu beklerken hata yönetimi yapmayı, kod okunabilirliğini artırmayı ve çoklu asenkron işlemleri kolayca yönetmeyi sağlar. Promise, asenkron görevlerle çalışırken JavaScript uygulamalarını daha etkili hale getiren önemli bir araçtır.
+
+# Array Methodları
+# 1)
+```javascript
+var dolap=["Shirt", "Pant" ,"TShirt"];
+dolap.pop();
+console.log(dolap);
+```
+# 2)
+```javascript
+var dolap=["Shirt", "Pant" ,"TShirt"];
+dolap.splice(0,1,'Hat');
+console.log(dolap);
+```
+# 3)
+```javascript
+var dolap=["Shirt", "Pant" ,"TShirt"];
+console.log(Array.isArray(dolap));
+```
+# 4)
+## includes()
+```javascript
+var dolap=["Shirt", "Pant" ,"TShirt"];
+
+const varMi="Pant";
+if(dolap.includes(varMi)){
+    console.log(`${varMi} elemanı dizide bulunuyor`);
+}else {
+    console.log(`${varMi} elemanı dizide bulunmuyor`)};
+```
+## indexOf()
+```javascript
+var dolap=["Shirt", "Pant" ,"TShirt"];
+const indexofElement=1;
+if(dolap.indexOf(indexofElement) !== -1){
+    console.log(`${indexofElement} elemanı dizide bulunuyor`);
+}else {
+    console.log(`${indexofElement} elemanı dizide bulunmuyor`)};
+```
+## find()
+```javascript
+var dolap = ["Shirt", "Pant", "TShirt"];
+const arananEleman = "Pant";
+
+const bulunanEleman = dolap.find(eleman => eleman === arananEleman);
+
+if (bulunanEleman !== undefined) {
+    console.log(`${arananEleman} bulundu.`);
+} else {
+    console.log(`${arananEleman} bulunamadı.`);
+}
+```
+# 5)
+```javascript
+var dolap = ["Shirt", "Pant", "TShirt"];
+ 
+const elemanTopla=()=>{
+    let toplam=0;
+    for(i=0;i<dolap.length;i++){
+        toplam+=dolap[i].length;
+    }
+    return toplam;
+}
+
+const sonuc=elemanTopla();
+console.log(sonuc);
+```
+# 6)
+## map()
+```javascript
+var dolap = ["Shirt", "Pant", "TShirt"];
+
+const buyukHarf=dolap.map(eleman=>eleman.toUpperCase());
+console.log(buyukHarf);
+```
+## forEach()
+```javascript
+var dolap = ["Shirt", "Pant", "TShirt"];
+
+const buyukHarf2 = [];
+dolap.forEach(eleman => buyukHarf2.push(eleman.toUpperCase()));
+
+console.log(buyukHarf2);
+```
+## for
+```javascript
+var dolap = ["Shirt", "Pant", "TShirt"];
+
+const buyukHarf3=[];
+for(i=0;i<dolap.length;i++){
+    buyukHarf3.push(dolap[i].toUpperCase());
+}
+console.log(buyukHarf3);
+```
+# 7)
+```javascript
+var dolap = ["Shirt", "Pant", "TShirt"];
+
+const dolapObj=[];
+
+dolap.forEach((eleman,index)=>{
+    dolapObj[index]=eleman;
+}
+)
+console.log(dolapObj);
+```
+# 8)Slice Splice Farkı
+
+Slice metodu, bir dizinin belirli bir bölümünü seçmek için kullanılır ve orijinal diziyi değiştirmez. Splice metodu ise bir dizinin içeriğini değiştirmek için kullanılır, belirli bir bölgesini silebilir veya yeni elemanlar ekleyebilir. Splice metodu orijinal diziyi değiştirir.
+
+# 1.Kod Çıktısı
+* Error 1
+* Success 4
+
+Bu JavaScript kodu, bir Promise nesnesi oluşturan job fonksiyonunu içerir. Bu promise hemen reddedilir (reject). Daha sonra gelen promise.then() zinciri, bu reddedilme durumunu takip eden bir catch bloğu içerir. Dolayısıyla, promise reddedildiğinde, catch bloğu çalışır ve "Error 1" yazdırılır. Daha sonra gelen herhangi bir .then() bloğu bu durumdan bağımsız olarak çalışır, bu nedenle "Success 4" yazdırılır. Bu durum, Promiselerin zincirleme ve ardışık işlemlerin kontrolü sağlayan özelliklerinden birini gösterir.
+
+# 2.Kod Çıktısı
+* success
+* Defeat
+* error
+* Success: test
+
+Bu JavaScript kodu, bir dizi Promise zinciri oluşturur. İlk promise başarıyla tamamlanır ve "success" değeri yazdırılır. Ancak, ikinci promise zincirinde "victory" olmayan bir durum oluşturularak "Defeat" hatası catch bloğuna yönlendirilir ve yazdırılır. Daha sonra, bir reject durumunu simgeliyerek "error" yazdıran bir promise, bir .catch() bloğu içinden geçirilir. Ardından bir string ("Error caught") yazdırılır. Sonrasında, bir hata oluşturulup yakalanarak "Error: test" yazdırılır. Bu durumda, başarılı ve hata durumları sırayla "success", "Defeat", "error", ve "Error: test" çıktısını üretir.
